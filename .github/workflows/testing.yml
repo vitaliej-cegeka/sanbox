@@ -1,0 +1,33 @@
+name: OpenTofu Test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  tofu:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/opentofu/opentofu:latest
+
+    steps:
+      - name: Check environment
+        run: |
+          uname -a
+          cat /etc/os-release
+      
+      - name: Show hostname
+        run: hostname
+      
+      - name: Check tofu binary
+        run: which tofu
+      
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Init
+        run: tofu init
+
+      - name: Apply
+        run: tofu apply -auto-approve
