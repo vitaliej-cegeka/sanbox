@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  host:
+  check_host_info:
     runs-on: ubuntu-latest
     steps:
       - name: Host info
@@ -16,6 +16,7 @@ jobs:
           cat /etc/os-release
           which tofu || echo "tofu not installed"
   tofu:
+    needs: heck_host_info
     runs-on: ubuntu-latest
 
     container:
