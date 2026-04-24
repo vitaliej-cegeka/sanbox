@@ -5,6 +5,16 @@ on:
   workflow_dispatch:
 
 jobs:
+  host:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Host info
+        run: |
+          echo "=== HOST ==="
+          hostname
+          uname -a
+          cat /etc/os-release
+          which tofu || echo "tofu not installed"
   tofu:
     runs-on: ubuntu-latest
 
