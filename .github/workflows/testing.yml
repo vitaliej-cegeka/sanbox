@@ -16,7 +16,7 @@ jobs:
           cat /etc/os-release
           which tofu || echo "tofu not installed"
   tofu:
-    needs: heck_host_info
+    needs: check_host_info
     runs-on: ubuntu-latest
 
     container:
